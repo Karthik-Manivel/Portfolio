@@ -1,6 +1,6 @@
 
 export default {
-  basePath: '/upshotengineering',
+  basePath: '/',
   supportedLocales: {
   "en-US": ""
 },
