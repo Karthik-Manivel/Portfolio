@@ -1,0 +1,11 @@
+<div class="products-container">
+    <div class="products-grid">
+      <div class="product-card" *ngFor="let product of products" [@fadeInOut]>
+        <div class="product-image"></div>
+        <h3>{{ product.name }}</h3>
+        <p>{{ product.description }}</p>
+        <p class="price">{{ product.price }}</p>
+      </div>
+    </div>
+  </div>
+  
