@@ -1,0 +1,107 @@
+@import 'primeicons/primeicons.css';
+
+:host ::ng-deep .p-toolbar {
+  background-color: #f4f4f4;
+  color: #1b1e39;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 60px;
+  padding: 5px 0;
+  z-index: 100;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+}
+
+.project-name {
+  color: #1b1e39;
+  font-size: 21px;
+  text-align: center;
+	padding-left: 15px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #007acc;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+:host ::ng-deep .p-sidebar {
+  background-color: #f4f4f4; /* Background color for the sidebar */
+  color: #1b1e39; /* Text color */
+  width: 250px; /* Width of the sidebar */
+  padding: 20px; /* Padding inside the sidebar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow effect for depth */
+  transition: all 0.3s ease; /* Smooth transition for open/close */
+}
+
+:host ::ng-deep .p-sidebar h4 {
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+:host ::ng-deep .sidebar-menu {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove padding */
+}
+
+:host ::ng-deep .sidebar-menu li {
+  margin: 10px 0; /* Space between items */
+}
+
+:host ::ng-deep .sidebar-menu a {
+  text-decoration: none; /* Remove underline from links */
+  font-size: 16px; /* Font size for the links */
+  font-weight: bold; /* Bold text for emphasis */
+  color: #007acc; /* Link color */
+  padding: 10px 15px; /* Padding around the link text */
+  display: block; /* Make the link block-level */
+  border-radius: 5px; /* Rounded corners for links */
+  transition: background-color 0.2s ease; /* Smooth transition for hover */
+}
+
+:host ::ng-deep .sidebar-menu a:hover {
+  background-color: #e1e1e1; /* Background color on hover */
+}
+
+@media (max-width: 768px) {
+  :host ::ng-deep .p-sidebar {
+    width: 200px; /* Adjust width for smaller screens */
+    padding: 15px; /* Adjust padding */
+  }
+  
+  :host ::ng-deep .sidebar-menu a {
+    font-size: 14px; /* Smaller font size for compact view */
+  }
+}
+
+
+.menu-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #1b1e39;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .menu-button {
+    display: block;
+  }
+}
