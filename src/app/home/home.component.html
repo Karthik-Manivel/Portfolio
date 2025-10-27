@@ -1,7 +1,228 @@
-<div class="home-container">
-    <div class="hero-content">
-      <h1>Welcome to Our Smartphone Website</h1>
-      <p>Experience the future of mobile technology</p>
-    </div>
+<div class="portfolio-container">
+  <!-- Animated Background -->
+  <div class="background-animation">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
   </div>
-  
+
+  <!-- Navigation -->
+  <nav class="navbar glass-effect">
+              <a class="nav-brand">{{ profile.name }}</a>
+
+    <div class="nav-links">
+
+      <a (click)="scrollToSection('profile')" class="nav-link">Profile</a>
+      <a (click)="scrollToSection('objective')" class="nav-link">About</a>
+      <a (click)="scrollToSection('skills')" class="nav-link">Skills</a>
+      <a (click)="scrollToSection('experience')" class="nav-link">Experience</a>
+      <a (click)="scrollToSection('projects')" class="nav-link">Projects</a>
+      <a (click)="scrollToSection('education')" class="nav-link">Education</a>
+      <a (click)="scrollToSection('achievements')" class="nav-link">Achievements</a>
+      <a (click)="scrollToSection('certifications')" class="nav-link">Certifications</a>
+    </div>
+  </nav>
+
+  <!-- Profile Section -->
+  <section id="profile" class="section hero-section">
+    <div class="glass-card profile-card">
+      <div class="profile-content">
+        <div class="profile-image-container">
+          <img [src]="profile.image" [alt]="profile.name" class="profile-image">
+          <div class="status-indicator"></div>
+        </div>
+        <div class="profile-info">
+          <h1 class="profile-name">{{ profile.name }}</h1>
+          <h2 class="profile-title">{{ profile.title }}</h2>
+          <div class="contact-info">
+            <div class="contact-item">
+              <span class="icon">📧</span>
+              <span>{{ profile.email }}</span>
+            </div>
+            <div class="contact-item">
+              <span class="icon">📱</span>
+              <span>{{ profile.phone }}</span>
+            </div>
+            <div class="contact-item">
+              <span class="icon">📍</span>
+              <span>{{ profile.location }}</span>
+            </div>
+          </div>
+          <div class="social-links">
+            <a [href]="profile.github" target="_blank" class="social-btn glass-effect">
+              <span class="icon">💻</span> GitHub
+            </a>
+            <a [href]="profile.linkedin" target="_blank" class="social-btn glass-effect">
+              <span class="icon">💼</span> LinkedIn
+            </a>
+            <a [href]="profile.portfolio" target="_blank" class="social-btn glass-effect">
+              <span class="icon">🌐</span> Portfolio
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Objective Section -->
+  <section id="objective" class="section">
+    <div class="glass-card">
+      <h2 class="section-title">
+        <span class="title-icon">🎯</span>
+        Objective
+      </h2>
+      <p class="objective-text">{{ objective }}</p>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills" class="section">
+    <div class="glass-card">
+      <h2 class="section-title">
+        <span class="title-icon">⚡</span>
+        Technical Skills
+      </h2>
+      <div class="skills-container">
+        <div *ngFor="let category of getUniqueCategories()" class="skill-category">
+          <h3 class="category-title">{{ category }}</h3>
+          <div class="skills-list">
+            <div *ngFor="let skill of getSkillsByCategory(category)" class="skill-item">
+              <div class="skill-header">
+                <span class="skill-name">{{ skill.name }}</span>
+                <span class="skill-percentage">{{ skill.level }}%</span>
+              </div>
+              <div class="skill-bar">
+                <div class="skill-progress" [style.width.%]="skill.level"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="section">
+    <div class="glass-card">
+      <h2 class="section-title">
+        <span class="title-icon">💼</span>
+        Professional Experience
+      </h2>
+      <div class="timeline">
+        <div *ngFor="let exp of experiences; let i = index" class="timeline-item">
+          <div class="timeline-marker"></div>
+          <div class="timeline-content glass-effect">
+            <div class="experience-header">
+              <div>
+                <h3 class="experience-title">{{ exp.title }}</h3>
+                <h4 class="experience-company">{{ exp.company }}</h4>
+              </div>
+              <span class="experience-period">{{ exp.period }}</span>
+            </div>
+            <ul class="experience-description">
+              <li *ngFor="let desc of exp.description">{{ desc }}</li>
+            </ul>
+            <div class="tech-tags">
+              <span *ngFor="let tech of exp.technologies" class="tech-tag">{{ tech }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects" class="section">
+    <div class="glass-card">
+      <h2 class="section-title">
+        <span class="title-icon">🚀</span>
+        Past Projects
+      </h2>
+      <div class="projects-grid">
+        <div *ngFor="let project of projects" class="project-card glass-effect">
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-description">{{ project.description }}</p>
+          <div class="tech-tags">
+            <span *ngFor="let tech of project.technologies" class="tech-tag">{{ tech }}</span>
+          </div>
+          <div class="project-links">
+            <a *ngIf="project.link" [href]="project.link" target="_blank" class="project-btn">
+              <span class="icon">🔗</span> Live Demo
+            </a>
+            <a *ngIf="project.github" [href]="project.github" target="_blank" class="project-btn">
+              <span class="icon">💻</span> GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section id="education" class="section">
+    <div class="glass-card">
+      <h2 class="section-title">
+        <span class="title-icon">🎓</span>
+        Education
+      </h2>
+      <div class="education-list">
+        <div *ngFor="let edu of education" class="education-item glass-effect">
+          <div class="education-icon">🎓</div>
+          <div class="education-content">
+            <h3 class="education-degree">{{ edu.degree }}</h3>
+            <h4 class="education-institution">{{ edu.institution }}</h4>
+            <div class="education-footer">
+              <span class="education-year">{{ edu.year }}</span>
+              <span *ngIf="edu.gpa" class="education-gpa">{{ edu.gpa }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Achievements Section -->
+  <section id="achievements" class="section">
+    <div class="glass-card">
+      <h2 class="section-title">
+        <span class="title-icon">🏆</span>
+        Achievements
+      </h2>
+      <div class="achievements-grid">
+        <div *ngFor="let achievement of achievements" class="achievement-card glass-effect">
+          <div class="achievement-icon">🏆</div>
+          <h3 class="achievement-title">{{ achievement.title }}</h3>
+          <p class="achievement-description">{{ achievement.description }}</p>
+          <span class="achievement-year">{{ achievement.year }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="certifications" class="section">
+    <div class="glass-card">
+      <h2 class="section-title">
+        <span class="title-icon">📜</span>
+        Certifications
+      </h2>
+      <div class="certifications-grid">
+        <div *ngFor="let cert of certifications" class="certification-card glass-effect">
+          <div class="certification-badge">✓</div>
+          <h3 class="certification-name">{{ cert.name }}</h3>
+          <p class="certification-issuer">{{ cert.issuer }}</p>
+          <div class="certification-footer">
+            <span class="certification-year">{{ cert.year }}</span>
+            <span *ngIf="cert.credentialId" class="certification-id">ID: {{ cert.credentialId }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer glass-effect">
+    <p>&copy; 2024 {{ profile.name }}. All rights reserved.</p>
+    <p>Built with Angular 16 ❤️</p>
+  </footer>
+</div>
