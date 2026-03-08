@@ -1,0 +1,55 @@
+<section class="experience" id="experience">
+  <!-- Full-width bg image band -->
+  <div class="experience-hero">
+    <div class="hero-image" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&q=80')"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content" appScrollReveal [revealDelay]="0">
+      <span class="section-tag">Career Path</span>
+      <h2 class="section-title">Professional <span class="highlight">Journey</span></h2>
+      <p class="section-subtitle">A track record of delivering impact at every stage of my career.</p>
+    </div>
+  </div>
+
+  <!-- Timeline -->
+  <div class="timeline-container">
+    <div class="timeline-line"></div>
+
+    @for (exp of experiences; track exp.company; let i = $index) {
+      <div class="timeline-item" [class.right]="i % 2 !== 0" appScrollReveal [revealDirection]="i % 2 === 0 ? 'left' : 'right'" [revealDelay]="i * 150">
+        <div class="timeline-dot" [style.background]="exp.color" [style.box-shadow]="'0 0 20px ' + exp.color + '55'">
+          <i [class]="exp.icon"></i>
+        </div>
+
+        <div class="timeline-card">
+          <div class="card-accent" [style.background]="'linear-gradient(135deg, ' + exp.color + ', ' + exp.color + '88)'"></div>
+          <div class="card-body">
+            <div class="card-header">
+              <div>
+                <span class="card-period" [style.color]="exp.color">{{ exp.period }}</span>
+                <h3 class="card-role">{{ exp.role }}</h3>
+                <div class="card-company">
+                  <i class="fas fa-building"></i>
+                  <span>{{ exp.company }}</span>
+                  <span class="divider">·</span>
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>{{ exp.location }}</span>
+                </div>
+              </div>
+            </div>
+
+            <p class="card-description">{{ exp.description }}</p>
+
+            <ul class="card-highlights">
+              @for (h of exp.highlights; track h) {
+                <li>
+                  <i class="fas fa-check-circle" [style.color]="exp.color"></i>
+                  <span>{{ h }}</span>
+                </li>
+              }
+            </ul>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</section>

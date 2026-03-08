@@ -1,0 +1,35 @@
+<nav class="navbar" [class.scrolled]="isScrolled()">
+  <div class="nav-container">
+    <a class="logo" (click)="scrollTo('#hero')">
+      <span class="logo-text">Karthikeyan Manivel</span>
+    </a>
+
+    <ul class="nav-links" [class.active]="isMobileMenuOpen()">
+      @for (link of navLinks; track link.label) {
+        <li>
+          <a (click)="scrollTo(link.href)" class="nav-link">{{ link.label }}</a>
+        </li>
+      }
+      <li class="nav-cta">
+        <a (click)="scrollTo('#contact')" class="btn-nav-cta">Let's Talk</a>
+      </li>
+    </ul>
+
+    <div class="nav-actions">
+      <!-- Theme Toggle -->
+      <button class="theme-toggle" (click)="toggleTheme()" [attr.aria-label]="'Switch to ' + (themeService.currentTheme() === 'dark' ? 'light' : 'dark') + ' theme'">
+        <div class="toggle-track" [class.light]="themeService.currentTheme() === 'light'">
+          <i class="fas fa-moon moon-icon"></i>
+          <i class="fas fa-sun sun-icon"></i>
+          <div class="toggle-thumb"></div>
+        </div>
+      </button>
+
+      <button class="mobile-toggle" (click)="toggleMobileMenu()" [class.active]="isMobileMenuOpen()">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</nav>

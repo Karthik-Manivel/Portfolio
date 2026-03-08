@@ -1,0 +1,50 @@
+<section class="skills" id="skills">
+  <!-- Background -->
+  <div class="skills-bg">
+    <div class="grid-lines"></div>
+  </div>
+
+  <div class="skills-container">
+    <div class="section-header" appScrollReveal [revealDelay]="0">
+      <span class="section-tag">My Skills</span>
+      <h2 class="section-title">Technologies I <span class="highlight">master</span></h2>
+      <p class="section-subtitle">
+        A comprehensive toolkit for building modern, scalable applications from concept to deployment.
+      </p>
+    </div>
+
+    <div class="skills-grid">
+      @for (category of skillCategories; track category.title; let i = $index) {
+        <div class="skill-card" appScrollReveal [revealDelay]="i * 150">
+          <div class="card-header">
+            <div class="card-icon" [style.background]="'linear-gradient(135deg, ' + category.color + '22, ' + category.color + '08)'">
+              <i [class]="category.icon" [style.color]="category.color"></i>
+            </div>
+            <h3>{{ category.title }}</h3>
+          </div>
+
+          <div class="skills-list">
+            @for (skill of category.skills; track skill.name; let j = $index) {
+              <div class="skill-item">
+                <div class="skill-info">
+                  <div class="skill-name">
+                    <i [class]="skill.icon"></i>
+                    <span>{{ skill.name }}</span>
+                  </div>
+                  <span class="skill-percent">{{ skill.level }}%</span>
+                </div>
+                <div class="skill-bar">
+                  <div class="skill-progress"
+                       [style.width.%]="skill.level"
+                       [style.background]="'linear-gradient(90deg, ' + category.color + ', ' + category.color + '88)'"
+                       [style.animation-delay]="(i * 0.2 + j * 0.1) + 's'">
+                  </div>
+                </div>
+              </div>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

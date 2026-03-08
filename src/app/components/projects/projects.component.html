@@ -1,0 +1,67 @@
+<section class="projects" id="projects">
+  <!-- Background -->
+  <div class="projects-bg">
+    <div class="bg-gradient"></div>
+    <div class="bg-orb orb-1"></div>
+    <div class="bg-orb orb-2"></div>
+  </div>
+
+  <div class="projects-container">
+    <div class="section-header" appScrollReveal [revealDelay]="0">
+      <span class="section-tag">Portfolio</span>
+      <h2 class="section-title">Featured <span class="highlight">Projects</span></h2>
+      <p class="section-subtitle">
+        Each project is a unique piece of development, designed to solve real-world problems.
+      </p>
+    </div>
+
+    <!-- Filters -->
+    <div class="filter-bar" appScrollReveal [revealDelay]="100">
+      @for (filter of filters; track filter) {
+        <button
+          class="filter-btn"
+          [class.active]="activeFilter === filter"
+          (click)="setFilter(filter)"
+        >
+          {{ filter }}
+        </button>
+      }
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid">
+      @for (project of filteredProjects; track project.title; let i = $index) {
+        <div class="project-card" appScrollReveal [revealDelay]="i * 150">
+          <!-- Image Section -->
+          <div class="card-image">
+            <img [src]="project.image" [alt]="project.title" loading="lazy" />
+            <div class="card-overlay" [style.background]="'linear-gradient(135deg, ' + project.color + 'cc, ' + project.color + '44)'">
+              <div class="overlay-actions">
+                <a [href]="project.link" class="action-btn" target="_blank" title="Live Demo">
+                  <i class="fas fa-external-link-alt"></i>
+                </a>
+                <a [href]="project.github" class="action-btn" target="_blank" title="Source Code">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Content Section -->
+          <div class="card-content">
+            <div class="card-category" [style.color]="project.color">
+              {{ project.category }}
+            </div>
+            <h3 class="card-title">{{ project.title }}</h3>
+            <p class="card-description">{{ project.description }}</p>
+            <div class="card-tags">
+              @for (tag of project.tags; track tag) {
+                <span class="tag">{{ tag }}</span>
+              }
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,82 @@
+<section class="hero" id="hero" #heroSection>
+  <!-- Slideshow Background -->
+  <div class="hero-slideshow">
+    @for (slide of slides; track slide.title; let i = $index) {
+      <div class="slide" [class.active]="currentSlide() === i">
+        <div class="slide-image" [style.backgroundImage]="'url(' + slide.image + ')'"></div>
+      </div>
+    }
+  </div>
+
+  <!-- Overlay -->
+  <div class="hero-overlay"></div>
+
+  <!-- Animated Particles -->
+  <div class="particles">
+    @for (p of [1,2,3,4,5,6,7,8,9,10,11,12]; track p) {
+      <div class="particle" [style.--delay]="p * 0.5 + 's'" [style.--x]="(p * 8.3) + '%'"></div>
+    }
+  </div>
+
+  <!-- Content -->
+  @if (showContent()) {
+    <div class="hero-content" @staggerIn>
+      <div class="hero-badge animate-item">
+        <span class="badge-dot"></span>
+        <span>{{ slides[currentSlide()].subtitle }}</span>
+      </div>
+      <h1 class="hero-title animate-item">
+        {{ slides[currentSlide()].title }}
+      </h1>
+      <p class="hero-description animate-item">
+        {{ slides[currentSlide()].description }}
+      </p>
+      <div class="hero-actions animate-item">
+        <button class="btn-primary" (click)="scrollToProjects()">
+          <span>View My Work</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+        <button class="btn-outline" (click)="scrollToContact()">
+          <span>Get In Touch</span>
+        </button>
+      </div>
+
+      <!-- Stats Row -->
+      <div class="hero-stats animate-item">
+        <div class="stat">
+          <span class="stat-number">5+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">50+</span>
+          <span class="stat-label">Projects Built</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-number">30+</span>
+          <span class="stat-label">Happy Clients</span>
+        </div>
+      </div>
+    </div>
+  }
+
+  <!-- Slide Indicators -->
+  <div class="slide-indicators">
+    @for (slide of slides; track slide.title; let i = $index) {
+      <button
+        class="indicator"
+        [class.active]="currentSlide() === i"
+        (click)="goToSlide(i)"
+      ></button>
+    }
+  </div>
+
+  <!-- Scroll Indicator -->
+  <div class="scroll-indicator">
+    <div class="mouse">
+      <div class="wheel"></div>
+    </div>
+    <span>Scroll to explore</span>
+  </div>
+</section>

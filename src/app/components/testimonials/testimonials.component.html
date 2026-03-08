@@ -1,0 +1,57 @@
+<section class="testimonials" id="testimonials">
+  <div class="testimonials-bg">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=80')"></div>
+    <div class="bg-overlay"></div>
+  </div>
+
+  <div class="testimonials-container">
+    <div class="section-header" appScrollReveal [revealDelay]="0">
+      <span class="section-tag">Testimonials</span>
+      <h2 class="section-title">What People <span class="highlight">Say</span></h2>
+      <p class="section-subtitle">Don't just take my word for it — hear from the people I've worked with.</p>
+    </div>
+
+    <!-- Carousel -->
+    <div class="carousel" appScrollReveal [revealDelay]="200" revealDirection="fade">
+      <div class="carousel-track" [style.transform]="'translateX(-' + (currentIndex() * 100) + '%)'">
+        @for (testimonial of testimonials; track testimonial.name) {
+          <div class="carousel-slide">
+            <div class="testimonial-card">
+              <div class="quote-icon">
+                <i class="fas fa-quote-left"></i>
+              </div>
+              <p class="testimonial-text">{{ testimonial.text }}</p>
+              <div class="testimonial-stars">
+                @for (star of [1,2,3,4,5]; track star) {
+                  <i class="fas fa-star" [class.filled]="star <= testimonial.rating"></i>
+                }
+              </div>
+              <div class="testimonial-author">
+                <img [src]="testimonial.avatar" [alt]="testimonial.name" class="author-avatar" />
+                <div>
+                  <h4 class="author-name">{{ testimonial.name }}</h4>
+                  <p class="author-role">{{ testimonial.role }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        }
+      </div>
+
+      <!-- Nav buttons -->
+      <button class="carousel-btn prev" (click)="prev()">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-btn next" (click)="next()">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+
+      <!-- Indicators -->
+      <div class="carousel-indicators">
+        @for (t of testimonials; track t.name; let i = $index) {
+          <button class="indicator" [class.active]="currentIndex() === i" (click)="goTo(i)"></button>
+        }
+      </div>
+    </div>
+  </div>
+</section>
