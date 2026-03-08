@@ -16,10 +16,15 @@
     position: absolute;
     inset: 0;
     opacity: 0;
-    transition: opacity 1.5s ease-in-out;
+    z-index: 0;
+    // Use visibility so inactive slides don't block interaction but still
+    // remain in the stacking context for a smooth cross-fade
+    transition: opacity 1.5s ease-in-out, z-index 0s 1.5s;
 
     &.active {
       opacity: 1;
+      z-index: 1;
+      transition: opacity 1.5s ease-in-out, z-index 0s 0s;
 
       .slide-image {
         animation: kenBurns 8s ease-in-out forwards;
@@ -101,16 +106,83 @@
   }
 }
 
-// Content
+// ─── Hero Content Wrapper ────────────────────────────────────────────────────
 .hero-content {
   position: relative;
   z-index: 3;
   max-width: 1400px;
   margin: 0 auto;
-  padding: 0 3rem;
-  padding-top: 6rem;
-  padding-bottom: 8rem;
+  padding: 6rem 3rem 8rem;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  // The wrapper itself fades in once on page load
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// ─── Slide text cross-fade stack ─────────────────────────────────────────────
+// All .hero-text-block sit in the same grid cell so they overlap;
+// only the .active one is visible — no fixed pixel offsets needed.
+.hero-text-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  margin-bottom: 2.5rem;
+  // min-height keeps the stats from jumping when text height differs between slides
+  min-height: 26rem;
+}
+
+.hero-text-block {
+  grid-area: 1 / 1;   // all blocks share the same cell
+
+  // Outgoing state
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  pointer-events: none;
+
+  &.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+
+    // Stagger each child as it enters
+    .anim-child {
+      opacity: 0;
+      animation: childReveal 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+      animation-delay: calc(var(--i) * 120ms + 200ms);
+    }
+  }
+}
+
+@keyframes childReveal {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+// ─── Stats row (static — animates in once on load) ───────────────────────────
+.anim-stats {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.8s 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    transform 0.8s 0.9s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  .hero-content.visible & {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .hero-badge {

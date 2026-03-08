@@ -1,4 +1,5 @@
 <section class="hero" id="hero" #heroSection>
+
   <!-- Slideshow Background -->
   <div class="hero-slideshow">
     @for (slide of slides; track slide.title; let i = $index) {
@@ -18,48 +19,60 @@
     }
   </div>
 
-  <!-- Content -->
-  @if (showContent()) {
-    <div class="hero-content" @staggerIn>
-      <div class="hero-badge animate-item">
-        <span class="badge-dot"></span>
-        <span>{{ slides[currentSlide()].subtitle }}</span>
-      </div>
-      <h1 class="hero-title animate-item">
-        {{ slides[currentSlide()].title }}
-      </h1>
-      <p class="hero-description animate-item">
-        {{ slides[currentSlide()].description }}
-      </p>
-      <div class="hero-actions animate-item">
-        <button class="btn-primary" (click)="scrollToProjects()">
-          <span>View My Work</span>
-          <i class="fas fa-arrow-right"></i>
-        </button>
-        <button class="btn-outline" (click)="scrollToContact()">
-          <span>Get In Touch</span>
-        </button>
-      </div>
+  <!-- Hero Content Wrapper — fades in once on page load -->
+  <div class="hero-content" [class.visible]="showContent()">
 
-      <!-- Stats Row -->
-      <div class="hero-stats animate-item">
-        <div class="stat">
-          <span class="stat-number">5+</span>
-          <span class="stat-label">Years Experience</span>
+    <!-- Cross-fading text blocks — one per slide, overlaid via CSS grid -->
+    <div class="hero-text-stack">
+      @for (slide of slides; track slide.title; let i = $index) {
+        <div class="hero-text-block" [class.active]="currentSlide() === i">
+
+          <div class="hero-badge anim-child" style="--i:0">
+            <span class="badge-dot"></span>
+            <span>{{ slide.subtitle }}</span>
+          </div>
+
+          <h1 class="hero-title anim-child" style="--i:1">
+            {{ slide.title }}
+          </h1>
+
+          <p class="hero-description anim-child" style="--i:2">
+            {{ slide.description }}
+          </p>
+
+          <div class="hero-actions anim-child" style="--i:3">
+            <button class="btn-primary" (click)="scrollToProjects()">
+              <span>View My Work</span>
+              <i class="fas fa-arrow-right"></i>
+            </button>
+            <button class="btn-outline" (click)="scrollToContact()">
+              <span>Get In Touch</span>
+            </button>
+          </div>
+
         </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number">50+</span>
-          <span class="stat-label">Projects Built</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <span class="stat-number">30+</span>
-          <span class="stat-label">Happy Clients</span>
-        </div>
+      }
+    </div>
+
+    <!-- Stats are static — sit below the cross-fading text blocks -->
+    <div class="hero-stats anim-stats">
+      <div class="stat">
+        <span class="stat-number">5+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number">50+</span>
+        <span class="stat-label">Projects Built</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat-number">30+</span>
+        <span class="stat-label">Happy Clients</span>
       </div>
     </div>
-  }
+
+  </div><!-- /.hero-content -->
 
   <!-- Slide Indicators -->
   <div class="slide-indicators">
@@ -74,9 +87,8 @@
 
   <!-- Scroll Indicator -->
   <div class="scroll-indicator">
-    <div class="mouse">
-      <div class="wheel"></div>
-    </div>
+    <div class="mouse"><div class="wheel"></div></div>
     <span>Scroll to explore</span>
   </div>
+
 </section>

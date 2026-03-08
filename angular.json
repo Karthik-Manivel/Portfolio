@@ -30,6 +30,12 @@
                 "glob": "**/*",
                 "input": "public"
               }
+              ,
+              {
+                "glob": "profile.jpg",
+                "input": "src",
+                "output": "/"
+              }
             ],
             "styles": [
               "src/styles.scss"
