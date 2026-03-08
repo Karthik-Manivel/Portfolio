@@ -1,0 +1,144 @@
+.achievements {
+  position: relative;
+  padding: 8rem 2rem;
+  overflow: hidden;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  background: #f9f9f9;
+}
+
+.achievements-bg {
+  position: absolute;
+  inset: 0;
+
+  .bg-image {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
+
+  .bg-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(10, 10, 10, 0.92) 0%,
+      rgba(26, 26, 46, 0.9) 50%,
+      rgba(10, 10, 10, 0.95) 100%
+    );
+  }
+}
+
+:host-context([data-theme="light"]) .achievements-bg .bg-overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(248, 248, 248, 0.93) 50%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+}
+
+.achievements-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--primary);
+  margin-bottom: 1rem;
+  position: relative;
+  padding-left: 2rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 1.2rem;
+    height: 2px;
+    background: var(--gradient-accent);
+    transform: translateY(-50%);
+  }
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 1rem;
+  color: var(--light);
+
+  .highlight {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--light-muted);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.achievements-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.achievement-card {
+  background: var(--surface);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--surface-border);
+  border-radius: 24px;
+  padding: 3rem;
+  text-align: center;
+  max-width: 400px;
+  min-width: 280px;
+  transition: box-shadow 0.2s;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+}
+.achievement-card:hover {
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+}
+.achievement-card h3 {
+  color: #0066ff;
+  margin-bottom: 0.5rem;
+}
+.achievement-card p {
+  color: var(--light);
+  font-size: 13px;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 768px) {
+  .achievement-card {
+    padding: 2rem 1.5rem;
+  }
+  .achievement-card p {
+    font-size: 1rem;
+  }
+  .achievements-bg .bg-image {
+    background-attachment: scroll;
+  }
+}

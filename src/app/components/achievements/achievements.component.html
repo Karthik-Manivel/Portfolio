@@ -1,0 +1,22 @@
+<section class="achievements" id="achievements">
+  <div class="achievements-bg">
+    <div class="bg-image" style="background-image: url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=80')"></div>
+    <div class="bg-overlay"></div>
+  </div>
+
+  <div class="achievements-container">
+    <div class="section-header" appScrollReveal [revealDelay]="0">
+      <span class="section-tag">Achievements</span>
+      <h2 class="section-title">Recognitions & <span class="highlight">Milestones</span></h2>
+      <p class="section-subtitle">Celebrating key moments and recognitions in my professional journey.</p>
+    </div>
+    <div class="achievements-list">
+      @for (achievement of achievements; track achievement.title) {
+        <div class="achievement-card" appScrollReveal [revealDelay]="100">
+          <h3>{{ achievement.title }}</h3>
+          <p>{{ achievement.description }}</p>
+        </div>
+      }
+    </div>
+  </div>
+</section>

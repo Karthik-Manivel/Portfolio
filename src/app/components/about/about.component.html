@@ -25,21 +25,12 @@
     <div class="about-content">
       <div appScrollReveal [revealDelay]="100">
         <span class="section-tag">About Me</span>
-        <h2 class="section-title">Passionate about crafting<br><span class="highlight">digital excellence</span></h2>
+        <h2 class="section-title">Experienced Full Stack Developer<br><span class="highlight">Karthikeyan Manivel</span></h2>
       </div>
 
       <p class="about-text" appScrollReveal [revealDelay]="200">
-        I'm a Full Stack Developer with 5+ years of experience building web applications that
-        make a difference. I specialize in creating robust, scalable solutions using modern
-        technologies like Angular, React, Node.js, and cloud platforms.
+        {{ profile.summary }}
       </p>
-
-      <p class="about-text" appScrollReveal [revealDelay]="300">
-        My approach combines clean architecture with pixel-perfect design implementation.
-        I believe in writing code that's not just functional, but maintainable and elegant.
-        Every project is an opportunity to push boundaries and deliver exceptional results.
-      </p>
-
       <div class="about-highlights" appScrollReveal [revealDelay]="400">
         <div class="highlight-item">
           <div class="highlight-icon">
@@ -47,7 +38,7 @@
           </div>
           <div>
             <h4>Frontend Expert</h4>
-            <p>Angular, React, TypeScript, SCSS</p>
+            <p>Angular, TypeScript, HTML, CSS, SCSS</p>
           </div>
         </div>
         <div class="highlight-item">
@@ -56,7 +47,25 @@
           </div>
           <div>
             <h4>Backend Master</h4>
-            <p>Node.js, Python, Java, APIs</p>
+            <p>Java 17, Spring Boot, Microservices, Fast API</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">
+            <i class="fas fa-database"></i>
+          </div>
+          <div>
+            <h4>Database Management</h4>
+            <p>PostgreSQL, Oracle SQL, Big Query, Hibernate, JDBC</p>
+          </div>
+        </div>
+        <div class="highlight-item">
+          <div class="highlight-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <div>
+            <h4>Security & Code Quality</h4>
+            <p>SonarQube, Unit Testing, Junit, Karma, Jasmine, 42Crunch, Azure AD, OAuth-JWT</p>
           </div>
         </div>
         <div class="highlight-item">
@@ -64,23 +73,22 @@
             <i class="fas fa-cloud"></i>
           </div>
           <div>
-            <h4>Cloud & DevOps</h4>
-            <p>AWS, Docker, CI/CD, Kubernetes</p>
+            <h4>Deployment & Maintenance</h4>
+            <p>Git, GCP, AWS, Kubernetes, OpenShift, Jenkins, CI/CD</p>
           </div>
         </div>
         <div class="highlight-item">
           <div class="highlight-icon">
-            <i class="fas fa-mobile-alt"></i>
+            <i class="fas fa-tools"></i>
           </div>
           <div>
-            <h4>Responsive Design</h4>
-            <p>Mobile-first, Cross-browser</p>
+            <h4>Tools</h4>
+            <p>Postman, Putty, Jira, IntelliJ, VS Code, Swagger, Alteryx, MS Office, LLM</p>
           </div>
         </div>
       </div>
-
       <div class="about-actions" appScrollReveal [revealDelay]="500">
-        <a href="#contact" class="btn-primary">
+        <a href="assets/Karthikeyan_Manivel.pdf" class="btn-primary" download>
           <span>Download Resume</span>
           <i class="fas fa-download"></i>
         </a>

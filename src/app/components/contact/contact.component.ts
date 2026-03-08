@@ -19,9 +19,9 @@ export class ContactComponent {
   };
 
   contactInfo = [
-    { icon: 'fas fa-envelope', label: 'Email', value: 'hello@karthikmanivel.dev', link: 'mailto:hello@karthikmanivel.dev' },
-    { icon: 'fas fa-phone', label: 'Phone', value: '+1 (555) 123-4567', link: 'tel:+15551234567' },
-    { icon: 'fas fa-map-marker-alt', label: 'Location', value: 'San Francisco, CA', link: '#' },
+    { icon: 'fas fa-envelope', label: 'Email', value: 'karthikeyan752001@gmail.com', link: 'mailto:karthikeyan752001@gmail.com' },
+    { icon: 'fas fa-phone', label: 'Phone', value: '+91 6383015116', link: 'tel:+916383015116' },
+    { icon: 'fas fa-map-marker-alt', label: 'Location', value: 'Chennai, India', link: '#' },
   ];
 
   socialLinks = [

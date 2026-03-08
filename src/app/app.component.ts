@@ -8,6 +8,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { AchievementsComponent } from './components/achievements/achievements.component';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,7 @@ import { FooterComponent } from './components/footer/footer.component';
     SkillsComponent,
     ProjectsComponent,
     ExperienceComponent,
-    TestimonialsComponent,
+    AchievementsComponent,
     ContactComponent,
     FooterComponent,
   ],
@@ -26,5 +27,5 @@ import { FooterComponent } from './components/footer/footer.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Karthik Manivel | Portfolio';
+  title = 'Karthikeyan Manivel | Portfolio';
 }

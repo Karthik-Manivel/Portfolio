@@ -76,10 +76,10 @@
   --input-focus-bg: rgba(255, 107, 107, 0.05);
   --scrollbar-track: #f8f8f8;
   --gradient-hero: linear-gradient(135deg, #f8f8f8 0%, #f0f0f0 50%, #f0f0f0 100%);
-    --gradient-accent: linear-gradient(135deg, #ff5416, #ff5416);
+  --gradient-accent: linear-gradient(135deg, #ff5416, #ff5416);
   --gradient-warm: linear-gradient(135deg, #ff5416, #ff5416);
   --gradient-cool: linear-gradient(135deg, #ff5416, #ff5416);
-    --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.12);
   --shadow-glow: 0 0 40px rgba(255, 107, 107, 0.2);
   --primary-rgb: 255, 107, 107;
 }
@@ -101,10 +101,20 @@ body {
   transition: background 0.5s ease, color 0.5s ease;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-display);
   font-weight: 700;
   line-height: 1.1;
+}
+
+p {
+  font-family: var(--font-primary);
+  color: var(--light);
 }
 
 a {

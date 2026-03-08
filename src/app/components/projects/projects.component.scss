@@ -210,6 +210,9 @@
 
 .card-content {
   padding: 1.5rem;
+  gap: 6px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-category {
@@ -245,6 +248,13 @@
   gap: 0.5rem;
 }
 
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .tag {
   padding: 0.3rem 0.8rem;
   background: var(--surface);
@@ -265,4 +275,10 @@
   .projects-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.projects-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
 }
